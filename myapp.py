@@ -13,11 +13,17 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    """
+    返回一个首页
+    """
     return render_template("index.html")
 
 
 @app.route("/ws")
 def ws():
+    """
+    建立一个websocket连接
+    """
     user_socket = request.environ.get("wsgi.websocket")  # type: WebSocket
     while 1:
         audio_file = user_socket.receive()
